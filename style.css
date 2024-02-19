@@ -1,0 +1,502 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@font-face {
+    font-family: 'digital';
+    src: url('digital.ttf');
+}
+
+:root {
+    font-size: 62.5%;
+    --bg-first: #13233A;
+    --bg-first-darker: color-mix(in srgb, var(--bg-first), 30% #000);
+    --bg-first-darker-darker: color-mix(in srgb, var(--bg-first), 45% #000);
+    --bg-second: #76D6DC;
+    --bg-third: #16D2B0;
+    --bg-third-lighter: color-mix(in srgb, var(--bg-third), 30% #FFF);
+    --bg-third-darker: color-mix(in srgb, var(--bg-third), 30% #000);
+    --font-primary: #EFF2F8;
+    --font-secondary: #1BCEEA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100svh;
+    font-size: 1.6rem;
+    font-family: Poppins;
+    background-color: var(--bg-first-darker-darker);   
+}
+
+a {
+    text-decoration: none;
+    color: var(--font-primary);
+}
+
+.wrapper {
+    margin: auto;
+    max-width: 130rem;
+    min-width: 110rem;
+    background-color: var(--bg-first);
+}
+
+
+/* Header elements */
+header {
+    color: var(--font-primary);
+    height: 16rem;
+    padding-inline: 4rem;
+    border-bottom: .4rem solid var(--bg-third);
+    box-shadow: 0 0 .8rem .6rem #0004;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* logo */
+header .logo {
+    height: 100%;
+    font-family: "digital", monospace;
+    font-size: 3rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: .4rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: .8rem;
+}
+
+header .logo i {
+    font-size: 5rem;
+    grid-row: span 2;
+    justify-self: flex-end;
+    align-self: center;
+}
+
+header .logo span {
+    align-self: end;
+}
+
+/* navigation */
+header nav {
+    height: 100%;
+    font-size: 1.4rem;
+    font-family: "Share Tech Mono", monospace;
+    padding-inline: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+header nav .search-box {
+    position: relative;
+}
+
+header nav .search-box input {
+    padding: .8rem 1.2rem;
+    border: none;
+    outline: none;
+    color: var(--bg-first);
+    font-weight: bold;
+    background-color: var(--bg-third);
+    border-radius: 2rem;
+}
+
+header nav .search-box i {
+    opacity: .8;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--bg-first);
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+}
+
+header nav a {
+    padding: .4rem .8rem;
+    text-shadow: 0 0 .2rem #333;
+    border-radius: .4rem;
+    transition: all .5s;
+}
+
+header nav a:hover:not(:nth-child(5)) {
+    background-color: #ffffff80;
+}
+
+header nav:has(a:hover) a:not(:hover) {
+    opacity: .6;
+}
+
+header nav a > i {
+    border-radius: 50%;
+    color: var(--bg-first);
+    padding: .4rem;
+    background-color: var(--bg-third);
+}
+
+header nav a > i:hover {
+    box-shadow: 0 0 .4rem .1rem var(--bg-second);
+}
+
+
+/* Main content */
+main {
+    width: 90%;
+    height: calc(100svh - 16rem);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .border h1 {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 3.7rem;
+    letter-spacing: 1rem;    
+    color: var(--font-primary);
+    text-shadow: 0 0 .4rem .2rem #000;
+    z-index: 2;
+    filter: blur(2rem);
+    transform: translateX(-60rem);
+    animation: showText .5s .5s 1 ease-out forwards;
+}
+
+main .border h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--bg-second);
+    letter-spacing: .1rem;
+    text-shadow: 0 0 .6rem .2rem #000;
+    z-index: 2;
+    filter: blur(2rem);
+    transform: translateX(60rem);
+    animation: showText .5s .5s 1 ease-out forwards;
+}
+
+@keyframes showText {
+    to {
+        filter: blur(0);
+        transform: translateX(0);
+    }
+}
+
+main .border {
+    margin-block: 6rem;
+    width: 60rem;
+    height: 14rem;
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-first-darker);
+    box-shadow: 0 0 .4rem var(--bg-third-lighter);
+    border-radius: .8rem;
+    overflow: hidden;
+    position: relative;
+}
+
+main .border::before {
+    content: '';
+    position: absolute;
+    width: 65rem;
+    height: 10rem;
+    background: linear-gradient(to right, var(--bg-third), var(--font-secondary));
+    animation: borderRotation 4s linear infinite;
+} 
+
+main .border::after {
+    content: '';
+    position: absolute;
+    background-color: var(--bg-first-darker);
+    border-radius: .8rem;
+    inset: .2rem;
+}
+
+@keyframes borderRotation {
+    to {
+        rotate: 360deg;
+    }
+} 
+
+
+/* Quiz elements */
+.container {
+    max-width: 100%;
+    flex-grow: 1;
+    margin-bottom: 5rem;
+}
+
+.container .cards-list {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.card {
+    width: 8rem;
+    height: 32rem;
+    padding: 2rem;
+
+    color: var(--font-primary);
+    background-color: var(--bg-first-darker);
+    border-radius: .8rem;
+    box-shadow: .2rem .2rem .2rem #0007;
+    font-size: 1.2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: opacity .5s ease-in-out;
+}
+
+.cards-list:has(.card:hover) .card:not(:hover) {
+    opacity: .7;
+}
+
+.card .content {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .content h1 {
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: .4rem;
+    border-bottom: .2rem solid;
+}
+
+.card .content p {
+    margin-block: 1.2rem;
+}
+
+.card .content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.card .content form label {
+    padding-block: .8rem;
+    padding-left: 1.2rem;
+    border-radius: 1.2rem;
+}
+
+.card .content form label:has(input:checked) {
+    background-color:var(--bg-first-darker-darker);
+}
+
+.card .content form > label:hover {
+    cursor: pointer;
+}
+
+.card .question-number {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 3rem;
+    color: var(--font-primary);
+    background-color: var(--bg-first-darker-darker);
+    box-shadow: 0 0.4rem .2rem var(--primary-light);
+    border-radius: .8rem;
+    opacity: .75;
+}
+
+
+/*First card (start) */
+.card .time {
+    flex-grow: 1;
+    margin-top: 6rem;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'digital';
+    letter-spacing: .1rem;
+}
+
+.card .question-number.start {
+    opacity: .75;
+    cursor: pointer;
+    color: var(--bg-first);
+    font-size: 1.2rem;
+    background-color: var(--bg-third);
+    box-shadow: 0 0 .4rem var(--bg-second);
+}
+
+.card .question-number.start:active {
+    background-color: var(--bg-third-lighter);
+}
+
+
+/* Last card (finish) */
+.card .finish {
+    text-align: center;
+    padding-top: .4rem;
+}
+
+.card .finish i {
+    opacity: .8;
+    font-size: 2rem;
+    text-shadow: 2px 2px 2px black;    
+}
+
+.card #results {
+    margin: auto;
+    height: 3rem;
+    width: 90%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--bg-second);
+}
+
+.card input[type=submit] {
+    margin-block: 2rem;
+    margin-inline: auto;
+    width: 90%;
+    padding: .8rem;
+    font-weight: bold;
+    border: none;
+    border-radius: .8rem;
+    box-shadow: 0 0 .4rem .4rem var(--primary-light);
+    cursor: pointer;
+    transition: scale .2s;
+}
+
+.card input[type=submit]:hover {
+    scale: .9;
+}
+
+
+/*largura maxima pro ultimo card (finish) */
+.card:nth-last-child(1) {
+    max-width: 25rem;
+}
+
+/*largura mina fixa pro primeiro card (start) */
+.card.fixed {
+    min-width: 25rem;
+}
+    
+/*content with the card not expanded */
+.card:not(:nth-child(1)) .content h1,
+.card:not(:nth-child(1)) .content p,
+.card:not(:nth-child(1)) .content form {
+    overflow: hidden;
+    opacity: 0;
+    filter: blur(2rem);
+    transform: translateY(-20rem);
+    pointer-events: none;
+}
+
+/*content when the card expands */
+.card.expands .content h1,
+.card.expands .content p,
+.card.expands .content form {
+    animation: showContent .5s 1 ease-in-out forwards;
+} @keyframes showContent {
+    to {
+        width: 100%;
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+        pointer-events: all;
+    }
+}
+
+.card.expands .content h1 {
+    animation-delay: .4s;
+}
+.card.expands .content p {
+    animation-delay: .3s;
+}
+.card.expands .content form {
+    animation-delay: .2s;
+}
+
+/* expands card on 'click' effect*/
+.card.expands {
+    animation: expandsCard .5s 1 ease-in forwards;
+} @keyframes expandsCard {
+    to {
+        width: 45rem;
+        min-width: 20rem;
+    }
+}
+
+
+/* for small screens */
+@media screen and (max-width: 975px) {
+    .card .content label {
+        padding-block: .4rem;
+        padding-left: .6rem;
+        font-size: 1rem;
+    }
+}
+
+
+/* footer */
+footer {
+    width: 100%;
+    min-height: 5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 4rem;   
+}
+
+footer button {
+    opacity: .9;
+    width: 14rem;
+    height: 3rem;
+    padding-right: 2rem;
+    text-align: right;
+    letter-spacing: .1rem;
+    cursor: pointer;
+    color: var(--font-primary);
+    font-family: "Share Tech Mono", monospace;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: none;
+    background-color: var(--bg-first-darker);
+    border-radius: 2rem;
+    box-shadow: 0 0 .4rem var(--bg-second);
+    transition: all .5s;
+}
+
+footer .social-midias {
+    padding-top: .3rem;
+}
+
+footer .social-midias i {
+    padding: .4rem;
+    margin-left: .4rem;
+    color: var(--bg-first);
+    border-radius: 50%;
+    background-color: var(--bg-third);
+    transition: all .5s;
+}
+
+footer button:hover {
+    animation: glowningButton 1s linear infinite;
+} @keyframes glowningButton {
+    0% {
+        box-shadow: 0 0 4px 0px var(--bg-third);
+    }
+    25% {
+        box-shadow: 0 0 4px 2px var(--bg-third);
+    }
+    50% {
+        box-shadow: 0 0 4px 4px var(--bg-third);
+    }
+    75% {
+        box-shadow: 0 0 4px 2px var(--bg-third);
+    }
+}
+
+footer i:hover {
+    box-shadow: 0 0 .4rem .1rem var(--bg-second);
+}
+
+footer:has(i:hover) i:not(:hover) {
+    opacity: .4;
+}
